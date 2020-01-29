@@ -1,5 +1,5 @@
 # MyNotes
-Simple script for store own notes with text, links or files.
+Simple script for storing your own notes with text, links or files.
 
 # Install
 0) Put the files in the desired directory

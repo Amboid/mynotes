@@ -2,10 +2,10 @@
 
 function conf($key) {
     $conf = [
-        'DB_LINK' => 'mysql://mynotes:mn:pss@localhost/mynotes',
+        'DB_LINK' => 'mysql://user:pass@host/db_name',
         'TB_PREFIX' => 'mn_',
         'ATTACH_DIR' => './attaches',
-        'AUTH' => 'yaaaa:h100794',
+        'AUTH' => 'user:pass',
     ];
     return isset($conf[$key]) ? $conf[$key] : false;
 }

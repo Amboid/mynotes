@@ -201,7 +201,7 @@ class DB
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
             ];
             $link = new PDO($dsn, $link_prms['user'], $link_prms['pass'], $options);
-            //$link = new PDO($dsn, conf('DB'.$db.'_USER'), conf('DB'.$db.'_PASS'), $options);
+            $link->exec("SET NAMES utf8"); // иногда charset=utf8 в $dsn не срабатывает
             static::$dbs[$db] = $link;
             if (!$link) throw new Exception('Can not connect to DB.');
         }
@@ -478,7 +478,7 @@ class Page
         foreach ($n->attaches as $k=>$v) {
             $attachLink = conf('ATTACH_DIR')."/$n->id/$v";
             $fname = (strlen($v)>30) ? mb_substr($v, 0, 12)."...".mb_substr($v, -15) : $v;
-            $attaches .= "<a href='$attachLink' class='g' title='$v'>$fname</a>\n";
+            $attaches .= "<a href='$attachLink' class='g' title='$v'><nobr>$fname</nobr></a>\n";
         }
         $attaches = nl2br(trim($attaches));
         
